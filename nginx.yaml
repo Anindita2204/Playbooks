@@ -1,0 +1,15 @@
+---
+- hosts: nodes
+  tasks: 
+    - name: install nginx
+      package:
+        name: nginx
+        state: present
+    - name: check nginx service
+      service:
+        name: nginx
+        state: started
+    - name: update the index file
+      copy: 
+        content: "<h1> Welcome to Training Session"
+        dest: /var/www/html/index.html
